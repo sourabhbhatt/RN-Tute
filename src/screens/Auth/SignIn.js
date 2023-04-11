@@ -1,13 +1,28 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {Button} from '../../components';
+import {useDispatch} from 'react-redux';
+import {setToken, setUserDetail} from '../../redux/slice/userSlice';
+import {ValidateEmail, storage} from '../../utils';
 
 const SignIn = ({navigation}) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
 
   const login = () => {
-    console.log('Login');
+    let data = {
+      name: 'Raj',
+      email: 'raj@gmail.com',
+      phone: '1234567890',
+      address: 'India',
+      image:
+        'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+    };
+    storage.set('userInfo', JSON.stringify(data));
+    dispatch(setToken('ldjhfgh874d793nkdf9e7tnlnbc7e098'));
+    dispatch(setUserDetail(data));
   };
 
   return (
@@ -16,9 +31,18 @@ const SignIn = ({navigation}) => {
       <TextInput
         placeholder="Email"
         value={email}
-        onChangeText={setEmail}
+        onChangeText={val => {
+          if (ValidateEmail(val)) {
+            setEmail(val);
+            setEmailError('');
+          } else {
+            setEmail(val);
+            setEmailError('Please enter valid email');
+          }
+        }}
         style={styles.textInput}
       />
+      {emailError && <Text style={styles.error}>{emailError}</Text>}
       <TextInput
         placeholder="Password"
         value={password}
@@ -62,5 +86,10 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     margin: 10,
     marginRight: 20,
+  },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    marginLeft: 10,
   },
 });

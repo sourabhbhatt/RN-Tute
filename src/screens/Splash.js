@@ -4,10 +4,13 @@ import {images} from '../utils';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate('SignIn');
-    }, 1000);
-  }, []);
+    const unsubscribe = navigation.addListener('focus', () => {
+      setTimeout(() => {
+        navigation.navigate('SignIn');
+      }, 500);
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

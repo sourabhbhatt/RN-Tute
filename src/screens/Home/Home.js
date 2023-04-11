@@ -3,9 +3,14 @@ import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import {data} from '../../utils';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Home = ({navigation}) => {
+  const dispatch = useDispatch();
+  const {token, userDetail} = useSelector(state => state?.user);
   const [products, setProducts] = useState(data);
+
+  console.log(`token::: ${token} \n userDetail::: ${userDetail}`);
 
   return (
     <View style={styles.container}>

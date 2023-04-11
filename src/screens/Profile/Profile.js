@@ -1,9 +1,12 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Button} from '../../components';
-import {images} from '../../utils';
+import {images, storage} from '../../utils';
+import {logOut} from '../../redux/slice/userSlice';
+import {useDispatch} from 'react-redux';
 
 const Profile = ({navigation}) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <Text>Hello, from Profile screen</Text>
@@ -12,6 +15,13 @@ const Profile = ({navigation}) => {
       <Button
         title="Go to home"
         onPress={() => navigation.navigate('Details')}
+      />
+      <Button
+        title="Log out"
+        onPress={() => {
+          dispatch(logOut());
+          storage.delete('userInfo');
+        }}
       />
     </View>
   );
