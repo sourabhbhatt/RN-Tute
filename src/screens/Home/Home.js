@@ -1,16 +1,32 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {images} from '../../utils';
-import {Button} from '../../components';
+import React, {useState} from 'react';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
+import {data} from '../../utils';
+import Card from '../../components/Card';
+import Header from '../../components/Header';
 
 const Home = ({navigation}) => {
+  const [products, setProducts] = useState(data);
+
   return (
     <View style={styles.container}>
-      <Text>Hello, from home screen</Text>
-      <Image source={images.boy} style={styles.img} />
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.push('Profile')}
+      <Header title={'E-com '} />
+      <FlatList
+        data={products}
+        style={{flex: 1}}
+        renderItem={({item, index}) => {
+          return (
+            <Card
+              key={index}
+              name={item.name}
+              email={item.email}
+              image={item.image}
+              address={item.address}
+              phone={item.phone}
+              onPress={() => navigation.navigate('Details', {item: item})}
+            />
+          );
+        }}
+        keyExtractor={item => item}
       />
     </View>
   );
@@ -28,5 +44,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 2,
+  },
+  button: {
+    width: '90%',
   },
 });

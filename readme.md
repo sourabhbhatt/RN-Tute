@@ -11,6 +11,8 @@ utils- helper functions, toast
 
 ## navigation
 
+## flatList
+
 ## flex
 
 https://reactnavigation.org/docs/getting-started

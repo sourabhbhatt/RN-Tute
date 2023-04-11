@@ -1,14 +1,75 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button} from '../../components';
 
-const SignUP = () => {
+const SignUP = ({navigation}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [mobile, setMobile] = useState('');
+
+  const signUp = () => navigation.navigate('SignIn');
+
   return (
-    <View>
-      <Text>SignUP</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Sign up here </Text>
+      <TextInput
+        placeholder="first name"
+        value={firstName}
+        onChangeText={setFirstName}
+        style={styles.textInput}
+      />
+      <TextInput
+        placeholder="last name"
+        value={lastName}
+        onChangeText={setLastName}
+        style={styles.textInput}
+      />
+      <TextInput
+        placeholder="mobile"
+        value={mobile}
+        keyboardType="numeric"
+        maxLength={10}
+        onChangeText={setMobile}
+        style={styles.textInput}
+      />
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={styles.textInput}
+      />
+      <TextInput
+        placeholder="Password"
+        value={password}
+        secureTextEntry={true}
+        onChangeText={setPassword}
+        style={styles.textInput}
+      />
+      <Button title="Sign up" onPress={signUp} />
     </View>
   );
 };
 
 export default SignUP;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+    textAlign: 'center',
+    margin: 10,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#000',
+    borderRadius: 5,
+    padding: 10,
+    margin: 10,
+  },
+});

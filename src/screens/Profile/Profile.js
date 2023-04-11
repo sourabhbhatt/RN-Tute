@@ -9,7 +9,10 @@ const Profile = ({navigation}) => {
       <Text>Hello, from Profile screen</Text>
       <Image source={images.boy} style={styles.img} />
       <Button title="back" onPress={() => navigation.pop()} />
-      <Button title="Go to home" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Go to home"
+        onPress={() => navigation.navigate('Details')}
+      />
     </View>
   );
 };
