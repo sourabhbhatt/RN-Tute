@@ -22,8 +22,8 @@ const RootNavigator = () => {
     if (userInfo && (userInfo !== 'undefined' || userInfo !== null)) {
       userInfo = JSON.parse(userInfo);
       setIsAuthenticated(true);
-      dispatch(setToken('ldjhfgh874d793nkdf9e7tnlnbc7e098'));
-      dispatch(setUserDetail(userInfo));
+      dispatch(setToken('ldjhfgh874d793nkdf9e7tnlnbc7e098')); // dummy token
+      dispatch(setUserDetail(userInfo)); // dummy user detail
     } else setIsAuthenticated(false);
   }, []);
 

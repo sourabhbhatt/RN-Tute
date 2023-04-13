@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../../components/Header';
 
 const CardDetails = ({route}) => {
+  console.log('route.params', route.params);
   const {item} = route.params;
   return (
     <View style={styles.container}>

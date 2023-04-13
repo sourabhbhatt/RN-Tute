@@ -15,6 +15,8 @@ utils- helper functions, toast
 
 ## flex
 
+## MMKV
+
 https://reactnavigation.org/docs/getting-started
 
 # Stack navigation
@@ -23,9 +25,15 @@ https://reactnavigation.org/docs/getting-started
 
 # drawer navigation
 
+# custom drawer
+
 # custom bottom navigator
 
 ## state or props
+
+{...}
+
+# share
 
 ## Redux -->>>>>>> Redux Toolkit
 
@@ -33,6 +41,10 @@ https://reactnavigation.org/docs/getting-started
 
 ## java script
 
-## linking
+## linking // deep link
+
+## hooks
+
+## axios / api
 
 ## push notification

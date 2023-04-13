@@ -30,6 +30,7 @@ const SignIn = ({navigation}) => {
       <Text style={styles.title}>Sign In screen</Text>
       <TextInput
         placeholder="Email"
+        placeholderTextColor={'gray'}
         value={email}
         onChangeText={val => {
           if (ValidateEmail(val)) {
@@ -45,6 +46,7 @@ const SignIn = ({navigation}) => {
       {emailError && <Text style={styles.error}>{emailError}</Text>}
       <TextInput
         placeholder="Password"
+        placeholderTextColor={'gray'}
         value={password}
         secureTextEntry={true}
         onChangeText={setPassword}
@@ -79,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     margin: 10,
+    color: '#000',
   },
   signupText: {
     fontSize: 13,

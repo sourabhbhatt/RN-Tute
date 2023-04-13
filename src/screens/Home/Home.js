@@ -8,9 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {token, userDetail} = useSelector(state => state?.user);
-  const [products, setProducts] = useState(data);
-
-  console.log(`token::: ${token} \n userDetail::: ${userDetail}`);
+  const [products, setProducts] = useState(data); //state
 
   return (
     <View style={styles.container}>
@@ -21,13 +19,13 @@ const Home = ({navigation}) => {
         renderItem={({item, index}) => {
           return (
             <Card
-              key={index}
+              key={index} //props
               name={item.name}
               email={item.email}
               image={item.image}
               address={item.address}
               phone={item.phone}
-              onPress={() => navigation.navigate('Details', {item: item})}
+              onPress={() => navigation.navigate('Details', {item: item})} // prop drilling
             />
           );
         }}

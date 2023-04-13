@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeStack from './HomeStack';
 import ProfileStack from './ProfileStack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {SampleProvider} from '../screens/Form';
 const Tab = createBottomTabNavigator();
 
 const tabArray = [
@@ -13,6 +14,10 @@ const tabArray = [
   {
     name: 'ProfileTab',
     component: ProfileStack,
+  },
+  {
+    name: 'SampleProvider',
+    component: SampleProvider,
   },
 ];
 
@@ -28,6 +33,8 @@ const BottomNavigator = () => {
               ? 'ios-information-circle'
               : 'ios-information-circle-outline';
           } else if (route.name === 'ProfileTab') {
+            iconName = focused ? 'ios-list' : 'ios-list-outline';
+          } else if (route.name === 'SampleProvider') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
           }
 
