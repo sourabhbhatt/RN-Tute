@@ -1,15 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
-import {data} from '../../utils';
+import {data as dummyData} from '../../utils';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import {useDispatch, useSelector} from 'react-redux';
+import useNonInitialEffect from '../../hook/useNonInitialEffect';
+import {Button} from '../../components';
+import UseFetchDataEg from '../UseFetchDataEg';
 
 const Home = ({navigation}) => {
   const dispatch = useDispatch();
   const {token, userDetail} = useSelector(state => state?.user);
-  const [products, setProducts] = useState(data); //state
+  const [products, setProducts] = useState(dummyData); // state
 
+  // return <UseFetchDataEg />;
   return (
     <View style={styles.container}>
       <Header title={'E-com '} />

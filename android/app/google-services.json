@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "529235110375",
+    "project_id": "apnastore-57d18",
+    "storage_bucket": "apnastore-57d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529235110375:android:e84413bc4297763a3fb542",
+        "android_client_info": {
+          "package_name": "com.learning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529235110375-ti720rge4pcrnj3fpeahcu5343cilo32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.learning",
+            "certificate_hash": "71279087fbcd094281ba9991ba08e64c0783ae26"
+          }
+        },
+        {
+          "client_id": "529235110375-utj7gm1eds089ndb53nmlhgfpak9575t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2LjPvfoy_-j7MCSr-LoGiwFteXIbGQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529235110375-1mi2i6eu6dhmk15mjd9pptbapd9m4djr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

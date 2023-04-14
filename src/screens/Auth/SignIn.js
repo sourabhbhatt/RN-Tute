@@ -4,7 +4,15 @@ import {Button} from '../../components';
 import {useDispatch} from 'react-redux';
 import {setToken, setUserDetail} from '../../redux/slice/userSlice';
 import {ValidateEmail, storage} from '../../utils';
-
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+GoogleSignin.configure({
+  webClientId:
+    '529235110375-utj7gm1eds089ndb53nmlhgfpak9575t.apps.googleusercontent.com',
+});
 const SignIn = ({navigation}) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -23,6 +31,34 @@ const SignIn = ({navigation}) => {
     storage.set('userInfo', JSON.stringify(data));
     dispatch(setToken('ldjhfgh874d793nkdf9e7tnlnbc7e098'));
     dispatch(setUserDetail(data));
+  };
+  const signOut = async () => {
+    try {
+      await GoogleSignin.signOut();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onGoogleButtonPress = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      signOut();
+      const userInfo = await GoogleSignin.signIn();
+      storage.set('userInfo', JSON.stringify(userInfo));
+      // dispatch(setToken(userInfo?.idToken));
+      // dispatch(setUserDetails(userInfo?.user));
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
   };
 
   return (
@@ -58,6 +94,13 @@ const SignIn = ({navigation}) => {
         New user? Sign up ?
       </Text>
       <Button title="Login" onPress={login} />
+      <GoogleSigninButton
+        style={{width: '70%', height: 48}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={onGoogleButtonPress}
+        disabled={false}
+      />
     </View>
   );
 };

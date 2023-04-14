@@ -1,8 +1,9 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SampleContext} from '.';
 import {Button} from '../../components';
-
+import axios from 'axios';
+import {appUrls, getPosts, updatePosts} from '../../API';
 const BaseFormDetail = ({
   basicDetails,
   setBasicDetails,
@@ -15,12 +16,31 @@ const BaseFormDetail = ({
     setProductDetails({...productDetails, name: 'New Name B'});
   };
 
+  useEffect(() => {
+    getPosts().then(response => {
+      console.log('data fetched ::::: ', response.data);
+    });
+  }, []);
+
+  const updateApiData = () => {
+    let data = {
+      id: 1,
+      title: 'foo-foo',
+      body: 'bar-bar',
+      userId: 1,
+    };
+    updatePosts(JSON.stringify(data)).then(response => {
+      console.log('data updated', response);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Button title="Update form data" onPress={updateData} />
       <Text>BaseForm</Text>
       <Text>{JSON.stringify(basicDetails)}</Text>
       <Text>{JSON.stringify(productDetails)}</Text>
+      <Button title="Update api data " onPress={updateApiData} />
     </View>
   );
 };

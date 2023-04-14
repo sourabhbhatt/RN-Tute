@@ -13,8 +13,6 @@ utils- helper functions, toast
 
 ## flatList
 
-## flex
-
 ## MMKV
 
 https://reactnavigation.org/docs/getting-started
@@ -33,8 +31,6 @@ https://reactnavigation.org/docs/getting-started
 
 {...}
 
-# share
-
 ## Redux -->>>>>>> Redux Toolkit
 
 ## context api
@@ -47,4 +43,10 @@ https://reactnavigation.org/docs/getting-started
 
 ## axios / api
 
+## firebase
+
+## flex
+
 ## push notification
+
+# share
