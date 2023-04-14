@@ -1,4 +1,4 @@
-package com.apnastore;
+package com.learning;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

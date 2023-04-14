@@ -1,4 +1,4 @@
-package com.apnastore;
+package com.learning;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
