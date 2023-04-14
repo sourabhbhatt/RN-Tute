@@ -4,6 +4,16 @@ import {Button} from '../../components';
 import {useDispatch} from 'react-redux';
 import {setToken, setUserDetail} from '../../redux/slice/userSlice';
 import {ValidateEmail, storage} from '../../utils';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  webClientId:
+    '529235110375-utj7gm1eds089ndb53nmlhgfpak9575t.apps.googleusercontent.com',
+});
 
 const SignIn = ({navigation}) => {
   const dispatch = useDispatch();
@@ -25,6 +35,26 @@ const SignIn = ({navigation}) => {
     dispatch(setUserDetail(data));
   };
 
+  const googleSignIn = async () => {
+    console.log('============ GOogle========================');
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('============ GOogle========================');
+      console.log(userInfo);
+      console.log('====================================');
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Sign In screen</Text>
@@ -58,6 +88,12 @@ const SignIn = ({navigation}) => {
         New user? Sign up ?
       </Text>
       <Button title="Login" onPress={login} />
+      <GoogleSigninButton
+        style={{width: '90%', height: 48, alignSelf: 'center'}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={googleSignIn}
+      />
     </View>
   );
 };
